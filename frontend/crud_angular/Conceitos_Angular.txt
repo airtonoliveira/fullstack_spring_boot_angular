@@ -1,0 +1,47 @@
+Conceitos: 
+
+e2e (End-to-End) - Para testes
+Karma.conf (Test Runner)
+angular.json (responsavel pelos comandos do app (serve, lint , test))
+polyfills.ts (responsavel pela compatibilidade entre diferentes navegadores)
+
+Comandos:
+
+ng --version
+ng new nome_do_projeto
+ng serve --open
+ng build (Chama o build que gera arquivos estáticos .js)
+ng generate component nome_componente (ng g c)
+/
+/Gera módulos
+ng generate module
+
+//Gera o módulo de rotas para este app
+ng generate module app-routing --flat --module=app
+
+ng generate service usuario
+ng generate class usuario
+
+//roda projeto no ambiente de homologação
+// -c (configuration)
+ng serve -c hom
+
+
+Códigos:
+
+
+TemplateUrl:
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+Template:
+
+@Component({
+  selector: 'app-root',
+  template: '<h1>{{title}}</h1>',
+  styleUrls: ['./app.component.css']
+})
