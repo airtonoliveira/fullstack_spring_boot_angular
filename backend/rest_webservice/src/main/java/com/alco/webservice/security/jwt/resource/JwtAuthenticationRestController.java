@@ -29,9 +29,6 @@ import com.alco.webservice.security.jwt.JwtUserDetails;
 @CrossOrigin(origins = "http://localhost:4200")
 public class JwtAuthenticationRestController {
 
-	@Value("${jwt.http.request.header}")
-	private String tokenHeader;
-
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -57,10 +54,10 @@ public class JwtAuthenticationRestController {
 
 	@RequestMapping(value = "${jwt.refresh.token.uri}", method = RequestMethod.GET)
 	public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
-		String authToken = request.getHeader(tokenHeader);
+		String authToken = request.getHeader(jwtTokenUtil.TOKEN_HEADER);
 		final String token = authToken.substring(7);
-		String username = jwtTokenUtil.getUsernameFromToken(token);
-		JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
+		//String username = jwtTokenUtil.getUsernameFromToken(token);
+		//JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
 
 		if (jwtTokenUtil.canTokenBeRefreshed(token)) {
 			String refreshedToken = jwtTokenUtil.refreshToken(token);

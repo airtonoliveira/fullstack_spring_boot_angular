@@ -32,7 +32,7 @@ export class TodoComponent implements OnInit {
 
   public saveTodo(){
 
-    if(this.id ===-1){
+    if(this.id ==-1){
       this.todoService.addTodo('airton',this.todo)
       .subscribe(
           data => {

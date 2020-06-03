@@ -40,8 +40,12 @@ export class ListTodosComponent implements OnInit {
     this.refreshTodos();
   }
 
+  getUser(){
+    return sessionStorage.getItem('authenticatedUser');
+  }
+
   refreshTodos(){
-    this.todoService.retrieveAllTodos('airton').subscribe(
+    this.todoService.retrieveAllTodos(this.getUser()).subscribe(
       response => {
         this.todos = response;
       }
@@ -49,7 +53,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   deleteTodo(id){
-    this.todoService.deleteTodo('airton', id).subscribe(
+    this.todoService.deleteTodo(this.getUser(), id).subscribe(
       response => {
         this.message=`Delete of Todo ${id} Successful!`
         this.refreshTodos();
